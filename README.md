@@ -7,7 +7,7 @@ A Next.js app with four pieces:
 3. **Self-edit form** — `/edit/[token]` — the private link emailed to a member once their listing is approved.
 4. **Admin dashboard** — `/admin` — password-protected, for approving/rejecting submissions and managing live listings.
 
-Member data is stored in `data/members.json` (created automatically on first run). Uploaded headshots/logos are saved to `public/uploads/`. Both are gitignored since they're runtime data, not source.
+Member data is stored in `data/members.json`, and uploaded headshots/logos in `data/uploads/` (served via `/api/uploads/[filename]`). Both live under `data/` and are gitignored since they're runtime data, not source — this also means a single persistent disk mounted at `data/` is enough to preserve everything on a host like Render.
 
 ## Setup
 
@@ -65,4 +65,4 @@ Members use their private `/edit/[token]` link at any time. Changes go live imme
 ## Notes for deployment
 
 - Set `SITE_URL` to your real domain so email links point to the right place.
-- `data/members.json` and `public/uploads/` need to persist across deploys — on platforms with an ephemeral filesystem (like Vercel's serverless functions), point these at a persistent volume or migrate to a real database/object storage before going live in production.
+- The whole `data/` directory (member records + uploaded photos) needs to persist across deploys. On Render or Railway, attach a persistent disk/volume mounted at `data/`. This won't work on purely serverless platforms (e.g. Vercel's default setup) since their filesystem is ephemeral — migrate to a real database/object storage first if deploying there.
