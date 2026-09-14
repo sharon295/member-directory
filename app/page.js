@@ -4,7 +4,9 @@ import DirectoryClient from "@/app/components/DirectoryClient";
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
-  const members = getApprovedMembers();
+  // Launch is a legacy free tier: kept in the data model for existing
+  // members and GHL tag reference, but no longer shown in the directory.
+  const members = getApprovedMembers().filter((m) => m.tier !== "launch");
 
   return (
     <main className="flex-1 bg-blush">

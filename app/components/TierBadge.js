@@ -2,6 +2,7 @@ import { TIER_LABELS } from "@/lib/constants";
 
 const STYLES = {
   launch: "bg-white text-muted border border-mauve/60",
+  lumina: "bg-[#7B5EA7] text-blush border border-[#7B5EA7]",
   legacy: "bg-plum text-blush border border-mauve",
   luxe: "bg-gold text-plum-deep border border-gold",
 };

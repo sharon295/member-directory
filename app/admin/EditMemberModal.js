@@ -79,7 +79,7 @@ export default function EditMemberModal({ member, onClose, onSaved }) {
             >
               {TIERS.map((t) => (
                 <option key={t} value={t}>
-                  {TIER_LABELS[t]}
+                  {t === "launch" ? "Launch (Inactive)" : TIER_LABELS[t]}
                 </option>
               ))}
             </select>

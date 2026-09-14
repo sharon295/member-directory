@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TIER_FIELDS, TIER_LABELS } from "@/lib/constants";
+import { TIER_FIELDS, TIER_LABELS, TIER_PRICE } from "@/lib/constants";
 import { FIELD_META } from "@/lib/formFields";
 
 export default function MemberForm({ tier, mode, initialData, submitUrl, confirmation }) {
@@ -96,9 +96,12 @@ export default function MemberForm({ tier, mode, initialData, submitUrl, confirm
       <h1 className="font-heading text-3xl text-plum-deep mb-1 text-center">
         {mode === "edit" ? "Edit Your Listing" : "Member Directory Listing"}
       </h1>
-      <p className="text-center text-mauve text-sm mb-8">
+      <p className={`text-center text-mauve text-sm ${TIER_PRICE[tier] ? "mb-1" : "mb-8"}`}>
         {TIER_LABELS[tier]} Membership
       </p>
+      {TIER_PRICE[tier] && (
+        <p className="text-center text-gold text-sm mb-8">{TIER_PRICE[tier]}</p>
+      )}
 
       <div className="flex flex-col gap-5">
         {fields.map((key) => {
