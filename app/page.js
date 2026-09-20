@@ -1,5 +1,6 @@
 import { getApprovedMembers } from "@/lib/db";
 import DirectoryClient from "@/app/components/DirectoryClient";
+import EmbedResizer from "@/app/components/EmbedResizer";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +11,7 @@ export default function HomePage() {
 
   return (
     <main className="flex-1 bg-blush">
+      <EmbedResizer />
       <header className="bg-plum-deep text-blush py-14 px-6 text-center">
         <p className="uppercase tracking-[0.3em] text-gold text-xs mb-3">
           The Possible Woman
